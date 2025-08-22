@@ -1,16 +1,14 @@
 <script lang="ts">
-  import type { DoubletClass } from "./DoubletClass.js";
+  /** * The optical doublet instance passed in by the parent. * If not bound, a
+new `DoubletClass` will be created internally. */
+  import type { DoubletClass } from "./DoubletClass.svelte";
 
-  // Props using runes syntax
-  let {
-    data,
-    updateData,
-    extraParam = $bindable(),
-  }: {
-    data: DoubletClass;
-    updateData: (changes: Partial<DoubletClass>) => void;
-    extraParam: number;
-  } = $props();
+  /**
+   * The optical doublet instance passed in by the parent.
+   * If not bound, a new `DoubletClass` will be created internally.
+   */
+  let { data = $bindable<DoubletClass>(), extraParam = $bindable<number>() } =
+    $props();
 </script>
 
 <h1>Change a b c</h1>
@@ -19,17 +17,15 @@
 
 <div style="margin: 20px 0;">
   <button
-    onclick={() =>
-      updateData({
-        a: data.a + 1,
-      })}>Update A</button
+    onclick={() => {
+      data.a += 1;
+    }}>Update A</button
   >
 
   <button
-    onclick={() =>
-      updateData({
-        b: data.b + 1,
-      })}>Update B</button
+    onclick={() => {
+      data.b += 1;
+    }}>Update B</button
   >
 
   <button
@@ -40,10 +36,8 @@
 
   <button
     onclick={() => {
-      updateData({
-        a: data.a + 1,
-        b: data.b + 2,
-      });
+      data.a += 1;
+      data.b += 2;
       extraParam += 10;
     }}>Update All</button
   >

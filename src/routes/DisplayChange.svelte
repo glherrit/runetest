@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { DoubletClass } from "./DoubletClass";
+  import { DoubletClass } from "./DoubletClass.svelte";
 
   // Props using runes syntax
   let {
